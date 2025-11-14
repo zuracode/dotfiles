@@ -15,3 +15,6 @@ vim.keymap.set('i', 'jj', '<ESC>', { desc = 'Exit insert mode in jj' })
 
 -- LSP signature showing is already mapped with blink.cmp's <CTRL-k>
 vim.keymap.set('i', '<CTRL-S>', '<Nop>')
+
+-- Oil nvim keymaps
+vim.keymap.set('n', '<leader>o', ':Oil<CR>', { desc = 'Open Oil nvim' })
