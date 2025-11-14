@@ -15,7 +15,17 @@ vim.lsp.config('*', {
 })
 vim.lsp.config("lua_ls", {})
 vim.lsp.config("ts_ls", {})
-vim.lsp.enable({ "ts_ls", "lua_ls" })
+vim.lsp.config("jsonls", {})
+vim.lsp.config("yamlls", {})
+vim.lsp.config("ruby_ls", {})
+vim.lsp.config("css_variables", {})
+vim.lsp.config("cssls", {})
+vim.lsp.config("cssmodules_ls", {})
+vim.lsp.config("html", {})
+vim.lsp.config("tailwindcss", {})
+vim.lsp.config("graphql", {})
+
+vim.lsp.enable({ "ts_ls", "lua_ls", "jsonls", "yamlls", "ruby_ls", "css_variables", "cssls", "cssmodules_ls", "html",  "tailwindcss", "graphql"})
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),

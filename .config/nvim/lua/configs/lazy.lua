@@ -27,7 +27,10 @@ require("lazy").setup({
     { import = "plugins.blink" },
     { import = "plugins.nvim-lint" },
     {import = "plugins.oil" },
-    {import = "plugins.oil-git-status"}
+    {import = "plugins.oil-git-status"},
+    {import ="plugins.oil-lsp-diagnostics" },
+    {import = "plugins.nvim-lspconfig" },
+    {import = "plugins.conform" }
   },
   -- colorscheme that will be used when installing plugins.
   -- install = { colorscheme = { "habamax" } },
