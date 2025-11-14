@@ -26,6 +26,8 @@ require("lazy").setup({
     { import = "plugins.tiny-inline-diagnostic" },
     { import = "plugins.blink" },
     { import = "plugins.nvim-lint" },
+    {import = "plugins.oil" },
+    {import = "plugins.oil-git-status"}
   },
   -- colorscheme that will be used when installing plugins.
   -- install = { colorscheme = { "habamax" } },
