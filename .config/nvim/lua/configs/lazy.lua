@@ -35,6 +35,8 @@ require("lazy").setup({
     { import = "plugins.fzf-lua" },
     { import = "plugins.nvim-web-devicons" },
     { import = "plugins.snacks" },
-    { import = "plugins.which-key" }
+    { import = "plugins.which-key" },
+    {import = "plugins.none-ls"},
+    {import = "plugins.plenary"}
   },
 })
