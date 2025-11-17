@@ -31,8 +31,10 @@ require("lazy").setup({
     { import = "plugins.oil-lsp-diagnostics" },
     { import = "plugins.nvim-lspconfig" },
     { import = "plugins.conform" },
-    { import = "plugins.neo-tree" }
+    { import = "plugins.neo-tree" },
+    { import = "plugins.fzf-lua" },
+    { import = "plugins.nvim-web-devicons" },
+    { import = "plugins.snacks" },
+    { import = "plugins.which-key" }
   },
-  -- colorscheme that will be used when installing plugins.
-  -- install = { colorscheme = { "habamax" } },
 })

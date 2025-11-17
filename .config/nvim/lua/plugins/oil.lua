@@ -9,6 +9,6 @@ return {
       signcolumn = "yes:2"
     },
   },
-  dependencies = { { "nvim-tree/nvim-web-devicons", opts = {} } },
+  dependencies = {},
   lazy = false,
 }
