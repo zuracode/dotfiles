@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set("n", "grh", vim.lsp.buf.document_highlight, opts)
 
     opts.desc = "Remove LSP highlight"
-    vim.keymap.set({ "n" }, "<C-l>", vim.lsp.buf.clear_references, opts)
+    vim.keymap.set({ "n" }, "<leader>rh", vim.lsp.buf.clear_references, opts)
 
     opts.desc = "Show LSP signatures in normal and insert mode"
     vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, opts)

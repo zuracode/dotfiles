@@ -38,6 +38,12 @@ require("lazy").setup({
     { import = "plugins.which-key" },
     { import = "plugins.none-ls" },
     { import = "plugins.plenary" },
-    { import = "plugins.harpoon" }
+    { import = "plugins.harpoon" },
+    { import = "plugins.vim-pipeline" },
+    { import = "plugins.lualine" },
+    { import = "plugins.indent-line" },
+    { import = "plugins.autopairs" },
+    { import = "plugins.todo-comments" },
+    { import = "plugins.gitsigns" }
   },
 })

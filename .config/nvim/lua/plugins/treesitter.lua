@@ -38,6 +38,7 @@ return {
         "c",
         "ruby"
       },
+      auto_install = true,
       incremental_selection = {
         enable = true,
         keymaps = {

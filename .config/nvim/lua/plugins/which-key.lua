@@ -2,7 +2,7 @@ return {
   "folke/which-key.nvim",
   event = "VeryLazy",
   opts = {
-    delay = 500
+    delay = 50000
   },
   keys = {
     {

@@ -1,6 +1,8 @@
 return {
   "folke/trouble.nvim",
-  opts = {},
+  opts = {
+    focus = true,
+  },
   keys = {
     {
       "<leader>xx",
