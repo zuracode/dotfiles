@@ -17,7 +17,7 @@ return {
         yaml = { "prettier" },
         graphql = { "prettier" },
         lua = { "stylua" },
-        ruby = { "rubyfmt", "rufo" }
+        ruby = { "rubocop" }
       },
       format_on_save = {
         lsp_fallback = true,
