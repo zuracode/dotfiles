@@ -6,7 +6,7 @@ return {
 
     lint.linters_by_ft = {
       json = { "jsonlint" },
-      yaml = { " yamllint" },
+      yaml = { "yamllint" },
       css = { "stylelint" },
       html = { "htmlhint" },
       lua = { "luac" },
