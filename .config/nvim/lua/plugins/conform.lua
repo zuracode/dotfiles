@@ -1,36 +1,102 @@
+local format_on_save = function(bufnr)
+  if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+    return
+  end
+  local disable_filetypes = { c = false, cpp = false }
+
+  return {
+    timeout_ms = 500,
+    lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+    async = false
+  }
+end
+
 return {
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile", "BufWritePre" },
-  config = function()
+  keys = {
+    {
+      '<leader>tf',
+      function()
+        -- If autoformat is currently disabled for this buffer,
+        -- then enable it, otherwise disable it
+        if vim.b.disable_autoformat then
+          vim.cmd 'FormatEnable'
+          vim.notify 'Enabled autoformat for current buffer'
+        else
+          vim.cmd 'FormatDisable!'
+          vim.notify 'Disabled autoformat for current buffer'
+        end
+      end,
+      desc = 'Toggle autoformat for current buffer',
+    },
+    {
+      '<leader>tF',
+      function()
+        -- If autoformat is currently disabled globally,
+        -- then enable it globally, otherwise disable it globally
+        if vim.g.disable_autoformat then
+          vim.cmd 'FormatEnable'
+          vim.notify 'Enabled autoformat globally'
+        else
+          vim.cmd 'FormatDisable'
+          vim.notify 'Disabled autoformat globally'
+        end
+      end,
+      desc = 'Toggle autoformat globally',
+    },
+  },
+  opts = {
+    format_on_save = function(bufrn)
+      format_on_save(bufrn)
+    end,
+    formatters_by_ft = {
+      javascript = { "prettier" },
+      typescript = { "prettier" },
+      javascriptreact = { "prettier" },
+      typescriptreact = { "prettier" },
+      svelte = { "prettier" },
+      css = { "prettier" },
+      html = { "prettier" },
+      json = { "prettier" },
+      yaml = { "prettier" },
+      graphql = { "prettier" },
+      lua = { "stylua" },
+      ruby = { "rubocop" }
+    },
+  },
+  config = function(_, opts)
     local conform = require("conform")
+    conform.setup(opts)
 
-    conform.setup({
-      formatters_by_ft = {
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescriptreact = { "prettier" },
-        svelte = { "prettier" },
-        css = { "prettier" },
-        html = { "prettier" },
-        json = { "prettier" },
-        yaml = { "prettier" },
-        graphql = { "prettier" },
-        lua = { "stylua" },
-        ruby = { "rubocop" }
-      },
-      format_on_save = {
-        lsp_fallback = true,
-        async = false,
-      },
+
+    vim.api.nvim_create_user_command('FormatDisable', function(args)
+      if args.bang then
+        -- :FormatDisable! disables autoformat for this buffer only
+        vim.b.disable_autoformat = true
+      else
+        -- :FormatDisable disables autoformat globally
+        vim.g.disable_autoformat = true
+      end
+    end, {
+      desc = 'Disable autoformat-on-save',
+      bang = true, -- allows the ! variant
+    })
+
+    vim.api.nvim_create_user_command('FormatEnable', function()
+      vim.b.disable_autoformat = false
+      vim.g.disable_autoformat = false
+    end, {
+      desc = 'Re-enable autoformat-on-save',
     })
 
     vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-      conform.format({
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 500,
-      })
+      local bufnr = vim.fn.bufnr()
+      local format_options = format_on_save(bufnr)
+
+      if format_options ~= nil then
+        conform.format(format_options)
+      end
     end, { desc = "Format file or range (in visual or normal mode)" })
   end,
 }
