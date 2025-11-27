@@ -18,10 +18,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set("n", "grh", vim.lsp.buf.document_highlight, opts)
 
     opts.desc = "Remove LSP highlight"
-    vim.keymap.set({ "n" }, "<leader>rh", vim.lsp.buf.clear_references, opts)
+    vim.keymap.set("n", "<leader>rh", vim.lsp.buf.clear_references, opts)
 
     opts.desc = "Show LSP signatures in normal and insert mode"
     vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, opts)
+
+    opts.desc = "Toggle LSP diagnostic"
+    vim.keymap.set('n', "grt", function()
+      local is_enabled = vim.diagnostic.is_enabled()
+      vim.diagnostic.enable(not is_enabled)
+
+      local toggle_status = is_enabled and 'Disabled' or 'Enabled'
+      local notification_text = "%s autoformat for current buffer"
+
+      vim.notify(string.format(notification_text, toggle_status))
+    end, opts)
   end,
 
 })
