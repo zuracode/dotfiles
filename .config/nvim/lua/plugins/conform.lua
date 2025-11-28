@@ -94,6 +94,7 @@ return {
 
       if format_options ~= nil then
         conform.format(format_options)
+        vim.notify("Fomatting triggered")
       end
     end, { desc = "Format file or range (in visual or normal mode)" })
   end,
