@@ -47,9 +47,7 @@ return {
     },
   },
   opts = {
-    format_on_save = function(bufrn)
-      format_on_save(bufrn)
-    end,
+    format_on_save = format_on_save,
     formatters_by_ft = {
       javascript = { "prettier" },
       typescript = { "prettier" },
