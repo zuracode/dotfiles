@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.diagnostic.enable(not is_enabled)
 
       local toggle_status = is_enabled and 'Disabled' or 'Enabled'
-      local notification_text = "%s autoformat for current buffer"
+      local notification_text = "%s lsp for current buffer"
 
       vim.notify(string.format(notification_text, toggle_status))
     end, opts)
