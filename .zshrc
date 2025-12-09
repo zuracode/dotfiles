@@ -23,9 +23,6 @@ source "${ZSH}/oh-my-zsh.sh"
 # Runtime Configurations
 # ============================================================================
 
-# Ruby (dynamic)
-export PATH="$HOME/.gem/ruby/$(ruby -r rbconfig -e 'print RbConfig::CONFIG["ruby_version"]' 2>/dev/null)/bin:$PATH"
-
 # fnm (Fast Node Manager)
 FNM_PATH="$HOME/Library/Application Support/fnm"
 if [ -d "$FNM_PATH" ]; then
@@ -65,3 +62,4 @@ fi
 # Powerlevel10k Configuration (Must be near the end)
 # ============================================================================
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
