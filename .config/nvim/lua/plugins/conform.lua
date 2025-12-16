@@ -60,7 +60,8 @@ return {
       yaml = { "prettier" },
       graphql = { "prettier" },
       lua = { "stylua" },
-      ruby = { "rubocop" }
+      ruby = { "rubocop" },
+      tomb = { "tombi" }
     },
   },
   config = function(_, opts)

@@ -25,7 +25,8 @@ vim.lsp.config("cssmodules_ls", {})
 vim.lsp.config("html", {})
 vim.lsp.config("tailwindcss", {})
 vim.lsp.config("graphql", {})
+vim.lsp.config("tombi", {})
 
 vim.lsp.enable({ "ts_ls", "lua_ls", "jsonls", "yamlls", "ruby-lsp", "solargraph", "css_variables", "cssls",
   "cssmodules_ls", "html",
-  "tailwindcss", "graphql" })
+  "tailwindcss", "graphql", "tombi" })

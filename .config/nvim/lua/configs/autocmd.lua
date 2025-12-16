@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set("n", "<leader>rh", vim.lsp.buf.clear_references, opts)
 
     opts.desc = "Show LSP signatures in normal and insert mode"
-    vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('i', "<C-k>", vim.lsp.buf.signature_help, opts)
 
     opts.desc = "Toggle LSP diagnostic"
     vim.keymap.set('n', "grt", function()
