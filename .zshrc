@@ -24,11 +24,7 @@ source "${ZSH}/oh-my-zsh.sh"
 # ============================================================================
 
 # fnm (Fast Node Manager)
-FNM_PATH="$HOME/Library/Application Support/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "$(fnm env --use-on-cd)"
-fi
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # npm global packages
 if command -v npm &> /dev/null; then
