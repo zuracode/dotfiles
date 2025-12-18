@@ -1,4 +1,3 @@
-local asdasd = 'asd'
 return {
   'saghen/blink.cmp',
   dependencies = { 'rafamadriz/friendly-snippets' },

@@ -1,3 +1,5 @@
+local helpers = require "configs.helpers"
+
 return {
   cmd = { 'solargraph', 'stdio' },
   settings = {
@@ -7,5 +9,5 @@ return {
   },
   init_options = { formatting = true },
   filetypes = { 'ruby' },
-  root_markers = { 'Gemfile' },
+  root_markers = helpers.root_markers_ruby_with_git
 }

@@ -165,5 +165,5 @@ if.app-id = "com.apple.finder"
 run = ["layout floating"]
 
 [[on-window-detected]]
-if.app-id = "com.apple.finder"
+if.app-id = "com.apple.mail"
 run = ["layout floating"]

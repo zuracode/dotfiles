@@ -1,8 +1,10 @@
+local helpers = require "configs.helpers"
+
 ---@type vim.lsp.Config
 return {
   cmd = { 'ruby-lsp' },
   filetypes = { 'ruby', 'eruby' },
-  root_markers = { 'Gemfile' },
+  root_markers = helpers.root_markers_ruby_with_git,
   init_options = {
     formatter = 'auto',
   },

@@ -47,7 +47,7 @@ return {
                   harpoon:list():select(idx)
                 end
               end,
-              ["ctrl-d"] = {
+              ["ctrl-x"] = {
                 fn = function(selected)
                   if (selected[1] ~= nil) then
                     local idx = tonumber(selected[1]:match("^(%d+):"))

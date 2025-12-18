@@ -1,4 +1,4 @@
-local util = require 'lspconfig.util'
+local helpers = require 'configs.helpers'
 
 ---@type vim.lsp.Config
 return {
@@ -6,6 +6,6 @@ return {
   filetypes = { 'graphql', 'typescriptreact', 'javascriptreact' },
   root_dir = function(bufnr, on_dir)
     local fname = vim.api.nvim_buf_get_name(bufnr)
-    on_dir(util.root_pattern('.graphqlrc*', '.graphql.config.*', 'graphql.config.*')(fname))
+    on_dir(helpers.root_pattern('.graphqlrc*', '.graphql.config.*', 'graphql.config.*')(fname))
   end,
 }
