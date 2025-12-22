@@ -5,7 +5,7 @@ local format_on_save = function(bufnr)
   local disable_filetypes = { c = false, cpp = false }
 
   return {
-    timeout_ms = 500,
+    timeout_ms = 1000,
     lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
     async = false
   }
@@ -49,16 +49,16 @@ return {
   opts = {
     format_on_save = format_on_save,
     formatters_by_ft = {
-      javascript = { "prettier" },
-      typescript = { "prettier" },
-      javascriptreact = { "prettier" },
-      typescriptreact = { "prettier" },
-      svelte = { "prettier" },
-      css = { "prettier" },
-      html = { "prettier" },
-      json = { "prettier" },
-      yaml = { "prettier" },
-      graphql = { "prettier" },
+      javascript = { "prettierd" },
+      typescript = { "prettierd" },
+      javascriptreact = { "prettierd" },
+      typescriptreact = { "prettierd" },
+      svelte = { "prettierd" },
+      css = { "prettierd" },
+      html = { "prettierd" },
+      json = { "prettierd" },
+      yaml = { "prettierd" },
+      graphql = { "prettierd" },
       lua = { "stylua" },
       ruby = { "rubocop" },
       tomb = { "tombi" }

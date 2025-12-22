@@ -5,6 +5,7 @@ return {
   ---@type snacks.Config
   opts = {
     image = { enabled = true },
-    bigfile = { notify = false }
+    bigfile = { notify = false },
+    indent = { enabled = true },
   }
 }

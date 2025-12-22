@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('i', "<C-k>", vim.lsp.buf.signature_help, opts)
 
     opts.desc = "Toggle(disable, enable) LSP diagnostic"
-    vim.keymap.set('n', "grt", function()
+    vim.keymap.set('n', "<leader>rt", function()
       local is_enabled = vim.diagnostic.is_enabled()
       vim.diagnostic.enable(not is_enabled)
 
