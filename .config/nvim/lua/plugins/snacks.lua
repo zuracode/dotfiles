@@ -6,6 +6,6 @@ return {
   opts = {
     image = { enabled = true },
     bigfile = { notify = false },
-    indent = { enabled = true },
+    indent = { animate = { enabled = false }, enabled = true },
   }
 }

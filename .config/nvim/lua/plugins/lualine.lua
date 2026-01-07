@@ -58,5 +58,6 @@ return {
       tabline = {},
       extensions = {},
     }
-  end
+  end,
+  enabled = false
 }

@@ -27,8 +27,8 @@ vim.schedule(function()
 end)
 
 -- tabs & indentation
-vim.opt.tabstop = 2       -- 2 spaces for tabs (prettier default)
-vim.opt.shiftwidth = 2    -- 2 spaces for indent width
+vim.opt.tabstop = 4       -- 2 spaces for tabs (prettier default)
+vim.opt.shiftwidth = 4    -- 2 spaces for indent width
 vim.opt.expandtab = true  -- expand tab to spaces
 vim.opt.autoindent = true -- copy indent from current line when starting new one
 
@@ -74,4 +74,4 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 
 -- folding blocks
-vim.o.foldmethod = 'indent'
+vim.o.foldmethod = 'manual'
