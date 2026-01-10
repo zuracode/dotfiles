@@ -1,15 +1,31 @@
 return {
   "ibhagwan/fzf-lua",
   dependencies = { "nvim-treesitter/nvim-treesitter-context" },
-  opts = {
-    winopts = {
-      title_pos = 'left',
-      backdrop  = 100,
-      preview   = {
-        title_pos = "left",
-      }
+  opts = function()
+    local actions = require("fzf-lua.actions")
+    return {
+      winopts = {
+        title_pos = 'left',
+        backdrop  = 100,
+        preview   = {
+          title_pos = "left",
+          wrap = "wrap",
+        }
+      },
+      fzf_opts = {
+        ['--no-hscroll'] = '',
+        ['--wrap'] = '',
+      },
+      keymap = {
+        fzf = {
+          ["ctrl-d"] = "half-page-down",
+          ["ctrl-u"] = "half-page-up",
+          ["ctrl-f"] = "page-down",
+          ["ctrl-b"] = "page-up",
+        },
+      },
     }
-  },
+  end,
   keys = {
     {
       "<leader>ff",

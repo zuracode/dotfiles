@@ -53,5 +53,6 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
         vim.lsp.enable('rubocop')
 
         vim.lsp.enable('tombi')
+        vim.lsp.enable('cspell_ls')
     end,
 })

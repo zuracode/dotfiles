@@ -20,46 +20,51 @@ return {
                 function()
                     local harpoon = require("harpoon")
                     local fzf = require("fzf-lua")
+                    local utils = require("fzf-lua.utils")
+
+                    local opts = fzf.config.normalize_opts({}, fzf.config.globals.grep)
+                    local header = ":: " .. utils.ansi_from_hl(opts.hls.header_bind, "<ctrl-x>") ..
+                                   " to " .. utils.ansi_from_hl(opts.hls.header_text, "delete")
 
                     fzf.fzf_exec(function(fzf_cb)
                         for i = 1, harpoon:list():length() do
                             local item = harpoon:list():get(i)
                             if item and item.value and item.value ~= "" then
-                                fzf_cb(string.format("%d: %s", i, item.value))
+                                fzf_cb(item.value)
                             end
                         end
                         fzf_cb()
                     end, {
-                        prompt = "Harpoon Files> ",
+                        prompt = "Harpoon> ",
+                        previewer = "builtin",
                         fzf_opts = {
-                            ["--preview"] = "bat --style=numbers --color=always $(echo {} | sed 's/^\\([0-9]\\+\\): //')",
+                            ["--header"] = header,
                         },
                         actions = {
                             ["default"] = function(selected)
-                                local idx = tonumber(selected[1]:match("^(%d+):"))
-                                if idx then
-                                    harpoon:list():select(idx)
+                                if selected[1] then
+                                    vim.cmd("edit " .. vim.fn.fnameescape(selected[1]))
                                 end
                             end,
                             ["ctrl-x"] = {
                                 fn = function(selected)
-                                    if (selected[1] ~= nil) then
-                                        local idx = tonumber(selected[1]:match("^(%d+):"))
-
-                                        if idx then
-                                            local item = harpoon:list():get(idx)
-                                            if item and item.value and item.value ~= "" then
-                                                harpoon:list():remove(item)
+                                    if selected[1] then
+                                        local list = harpoon:list()
+                                        for i = list:length(), 1, -1 do
+                                            local item = list:get(i)
+                                            if item and item.value == selected[1] then
+                                                list:remove(item)
+                                                break
                                             end
                                         end
 
-                                        if harpoon:list():length() == 0 then
+                                        if list:length() == 0 then
                                             vim.api.nvim_input('<Esc>')
                                         end
                                     end
                                 end,
-                                reload = true
-                            }
+                                reload = true,
+                            },
                         },
                     })
                 end,
