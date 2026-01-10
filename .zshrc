@@ -58,4 +58,3 @@ fi
 # Powerlevel10k Configuration (Must be near the end)
 # ============================================================================
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
