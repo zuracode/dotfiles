@@ -10,6 +10,7 @@ return {
     bigfile = { notify = false },
     indent = { animate = { enabled = false }, enabled = true },
     picker = {
+      trash = true,
       actions = {
         tmux_left = function(self)
           vim.api.nvim_set_current_win(self.main)
