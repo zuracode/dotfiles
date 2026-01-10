@@ -24,7 +24,7 @@ source "${ZSH}/oh-my-zsh.sh"
 # ============================================================================
 
 # fnm (Fast Node Manager)
-eval "$(fnm env --use-on-cd --shell zsh)"
+eval "$(fnm env --use-on-cd)"
 
 # npm global packages
 if command -v npm &> /dev/null; then

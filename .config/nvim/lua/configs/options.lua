@@ -79,3 +79,6 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 vim.opt.foldnestmax = 10
+
+-- window border
+vim.opt.winborder = 'rounded'

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nvim:*)",
+      "WebFetch(domain:github.com)",
+      "Read(//Users/zuratsintsadze/.local/share/nvim/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
