@@ -74,4 +74,8 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 
 -- folding blocks
-vim.o.foldmethod = 'manual'
+vim.opt.foldmethod = 'indent'
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+vim.opt.foldnestmax = 10
