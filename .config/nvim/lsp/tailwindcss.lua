@@ -1,4 +1,4 @@
-local helpers = require 'configs.helpers'
+local helpers = require('configs.helpers')
 
 ---@type vim.lsp.Config
 return {

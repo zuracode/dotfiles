@@ -1,14 +1,14 @@
 return {
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
     },
     lazy = false,
     config = function()
-      vim.keymap.set("n", "<leader>e", "<Cmd>Neotree<CR>")
-    end
-  }
+      vim.keymap.set('n', '<leader>e', '<Cmd>Neotree<CR>')
+    end,
+  },
 }

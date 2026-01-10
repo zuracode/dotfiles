@@ -6,14 +6,14 @@ return {
       show_hidden = true,
     },
     win_options = {
-      signcolumn = "yes:2"
+      signcolumn = 'yes:2',
     },
     keymaps = {
-      ["<C-h>"] = false,
-      ["<C-l>"] = false,
-      ["<leader>h"] = { "actions.select", opts = { horizontal = true } },
-      ["<leader>l"] = "actions.refresh",
-    }
+      ['<C-h>'] = false,
+      ['<C-l>'] = false,
+      ['<leader>h'] = { 'actions.select', opts = { horizontal = true } },
+      ['<leader>l'] = 'actions.refresh',
+    },
   },
   dependencies = {},
   lazy = false,

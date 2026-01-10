@@ -23,13 +23,13 @@ vim.o.showmode = true
 -- Remove this option if you want your OS clipboard to remain independent.
 -- See `:help 'clipboard'`
 vim.schedule(function()
-    vim.o.clipboard = 'unnamedplus'
+  vim.o.clipboard = 'unnamedplus'
 end)
 
 -- tabs & indentation
-vim.opt.tabstop = 4       -- 2 spaces for tabs (prettier default)
-vim.opt.shiftwidth = 4    -- 2 spaces for indent width
-vim.opt.expandtab = true  -- expand tab to spaces
+vim.opt.tabstop = 4 -- 2 spaces for tabs (prettier default)
+vim.opt.shiftwidth = 4 -- 2 spaces for indent width
+vim.opt.expandtab = true -- expand tab to spaces
 vim.opt.autoindent = true -- copy indent from current line when starting new one
 
 -- Enable break indent

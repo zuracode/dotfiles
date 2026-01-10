@@ -4,7 +4,7 @@ return {
   version = '1.*',
   opts = {
     snippets = {
-      preset = "default",
+      preset = 'default',
     },
     appearance = {
       -- sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -13,12 +13,12 @@ return {
       use_nvim_cmp_as_default = false,
       -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- adjusts spacing to ensure icons are aligned
-      nerd_font_variant = "normal",
+      nerd_font_variant = 'normal',
     },
     completion = {
       menu = {
         draw = {
-          columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+          columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', 'kind' } },
           components = {
             label_description = {
               text = function(ctx)
@@ -26,7 +26,7 @@ return {
               end,
             },
           },
-          treesitter = { 'lsp' }
+          treesitter = { 'lsp' },
         },
       },
       accept = {
@@ -43,6 +43,6 @@ return {
       ['<C-u>'] = { 'scroll_signature_up', 'fallback' },
       ['<C-d>'] = { 'scroll_signature_down', 'fallback' },
     },
-    signature = { enabled = true }
-  }
+    signature = { enabled = true },
+  },
 }
