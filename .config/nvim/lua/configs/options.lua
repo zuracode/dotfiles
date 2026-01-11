@@ -75,10 +75,11 @@ vim.o.confirm = true
 
 -- folding blocks
 vim.opt.foldmethod = 'indent'
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
+vim.opt.foldlevel = 99 -- High enough to keep most folds open
+vim.opt.foldlevelstart = 99 -- Start with folds open
 vim.opt.foldnestmax = 10
+vim.opt.foldminlines = 1
 
 -- window border
 vim.opt.winborder = 'rounded'

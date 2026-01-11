@@ -6,16 +6,29 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Save and restore folds for specific file types
+local view_group = vim.api.nvim_create_augroup('auto_view', { clear = true })
+local patter = '*.lua,*.py,*.js,*.ts,*.tsx,*.jsx,*.java,*.c,*.cpp,*.rs,*.go,*.rb'
 vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
-  pattern = { '*.*' },
+  group = view_group,
+  pattern = patter,
   desc = 'save view (folds), when closing file',
-  command = 'mkview',
+  callback = function()
+    if vim.bo.buftype == '' and not vim.bo.readonly and vim.fn.expand('%') ~= '' then
+      vim.cmd('mkview')
+    end
+  end,
 })
 
 vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
-  pattern = { '*.*' },
+  group = view_group,
+  pattern = patter,
   desc = 'load view (folds), when opening file',
-  command = 'silent! loadview',
+  callback = function()
+    if vim.bo.buftype == '' and not vim.bo.readonly and vim.fn.expand('%') ~= '' then
+      vim.cmd('silent! loadview')
+    end
+  end,
 })
 
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'InsertLeave', 'TextChanged' }, {
