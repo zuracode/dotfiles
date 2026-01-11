@@ -26,8 +26,7 @@ return {
   end,
   opts = {
     image = { enabled = true },
-    bigfile = { notify = false },
-    indent = { animate = { enabled = false }, enabled = true },
+    bigfile = { notify = false, enabled = true },
     picker = {
       trash = true,
       sources = {

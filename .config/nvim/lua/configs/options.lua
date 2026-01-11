@@ -27,8 +27,8 @@ vim.schedule(function()
 end)
 
 -- tabs & indentation
-vim.opt.tabstop = 4 -- 2 spaces for tabs (prettier default)
-vim.opt.shiftwidth = 4 -- 2 spaces for indent width
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true -- expand tab to spaces
 vim.opt.autoindent = true -- copy indent from current line when starting new one
 
@@ -57,7 +57,7 @@ vim.o.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', leadmultispace = '│ ' }
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'

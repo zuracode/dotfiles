@@ -18,3 +18,20 @@ vim.keymap.set('i', '<CTRL-S>', '<Nop>')
 
 -- Oil nvim keymaps
 vim.keymap.set('n', '<leader>o', ':Oil<CR>', { desc = 'Open Oil nvim' })
+
+-- Terminal keymaps
+vim.keymap.set('n', '<leader>t', function()
+  vim.cmd('split')
+  vim.cmd('terminal')
+  vim.cmd('resize 15')
+  vim.cmd('startinsert')
+end, { desc = 'Open terminal below' })
+
+-- Close terminal window when terminal process exits
+vim.api.nvim_create_autocmd('TermClose', {
+  callback = function()
+    if vim.fn.winnr('$') > 1 then
+      vim.cmd('close')
+    end
+  end,
+})

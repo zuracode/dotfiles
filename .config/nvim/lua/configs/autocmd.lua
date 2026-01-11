@@ -9,6 +9,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Save and restore folds for specific file types
 local view_group = vim.api.nvim_create_augroup('auto_view', { clear = true })
 local patter = '*.lua,*.py,*.js,*.ts,*.tsx,*.jsx,*.java,*.c,*.cpp,*.rs,*.go,*.rb'
+
 vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
   group = view_group,
   pattern = patter,
@@ -27,6 +28,10 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
   callback = function()
     if vim.bo.buftype == '' and not vim.bo.readonly and vim.fn.expand('%') ~= '' then
       vim.cmd('silent! loadview')
+      -- Restore foldmethod after loadview
+      if vim.bo.filetype == 'typescriptreact' or vim.bo.filetype == 'typescript' or vim.bo.filetype == 'javascript' or vim.bo.filetype == 'javascriptreact' then
+        vim.opt_local.foldmethod = 'indent'
+      end
     end
   end,
 })
@@ -36,5 +41,16 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'InsertLeave', 'TextChang
   callback = function()
     vim.opt_local.spell = true
     vim.opt_local.spelllang = 'en_us'
+  end,
+})
+
+-- Update leadmultispace based on shiftwidth
+vim.api.nvim_create_autocmd({ 'BufEnter', 'FileType' }, {
+  callback = function()
+    local sw = vim.bo.shiftwidth
+    if sw > 0 then
+      local spaces = string.rep(' ', sw - 1)
+      vim.opt_local.listchars:append({ leadmultispace = '│' .. spaces })
+    end
   end,
 })
