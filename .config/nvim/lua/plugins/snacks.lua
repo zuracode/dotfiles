@@ -5,6 +5,25 @@ return {
   lazy = false,
   priority = 1000,
   ---@type snacks.Config
+  config = function(_, opts)
+    require('snacks').setup(opts)
+
+    -- Override Snacks.input to use native vim.ui.input
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'LazyDone',
+      once = true,
+      callback = function()
+        if _G.Snacks and _G.Snacks.input then
+          _G.Snacks.input = function(input_opts, on_confirm)
+            vim.ui.input({
+              prompt = input_opts.prompt or input_opts.title,
+              default = input_opts.default,
+            }, on_confirm)
+          end
+        end
+      end,
+    })
+  end,
   opts = {
     image = { enabled = true },
     bigfile = { notify = false },
