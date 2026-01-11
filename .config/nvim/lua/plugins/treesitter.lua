@@ -37,6 +37,7 @@ return {
         'vimdoc',
         'c',
         'ruby',
+        'python',
       },
       auto_install = true,
       incremental_selection = {

@@ -18,6 +18,9 @@ vim.o.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = true
 
+-- Auto-hide command line when not in use (requires Neovim 0.8+)
+vim.o.cmdheight = 0
+
 -- Sync clipboard between OS and Neovim.
 -- Schedule the setting after `UiEnter` because it can increase startup-time.
 -- Remove this option if you want your OS clipboard to remain independent.
@@ -83,3 +86,7 @@ vim.opt.foldminlines = 1
 
 -- window border
 vim.opt.winborder = 'rounded'
+
+-- Keep automatic window equalization enabled but control direction
+vim.opt.equalalways = true
+vim.opt.eadirection = 'ver'
