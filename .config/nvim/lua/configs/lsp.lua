@@ -1,10 +1,5 @@
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client then
-      vim.notify(string.format('LSP %s attached', client.name), vim.log.levels.INFO)
-    end
-
     local opts = { buffer = args.buf, silent = true }
     opts.desc = 'Go to definition'
     vim.keymap.set('n', 'grd', vim.lsp.buf.definition, opts)
