@@ -11,6 +11,11 @@ return {
     indent = { animate = { enabled = false }, enabled = true },
     picker = {
       trash = true,
+      sources = {
+        explorer = {
+          follow_file = false,
+        },
+      },
       actions = {
         tmux_left = function(self)
           vim.api.nvim_set_current_win(self.main)
