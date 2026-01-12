@@ -29,5 +29,8 @@ return {
     'css',
     'json',
     'yaml',
+    'ruby',
+    'go',
+    'c',
   },
 }
