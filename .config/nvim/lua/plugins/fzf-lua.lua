@@ -1,6 +1,6 @@
 return {
   'ibhagwan/fzf-lua',
-  dependencies = { 'nvim-treesitter/nvim-treesitter-context' },
+  dependencies = { 'nvim-treesitter/nvim-treesitter-context', 'nvim-tree/nvim-web-devicons' },
   opts = function()
     return {
       winopts = {
