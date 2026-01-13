@@ -10,7 +10,7 @@ return {
         },
         use_icons_from_diagnostic = true,
         set_arrow_to_diag_color = true,
-        enable_on_insert = true,
+        enable_on_insert = false,
       },
     })
     vim.diagnostic.config({

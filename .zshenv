@@ -23,9 +23,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Ruby
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="$(gem environment gemdir)/bin:$PATH"
-#
+export PATH="$HOME/.rbenv/shims:$PATH"
+
 # Bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"

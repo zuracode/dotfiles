@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'InsertLeave', 'TextChanged' }, {
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'InsertLeave' }, {
   pattern = '*.md',
   callback = function()
     vim.opt_local.spell = true

@@ -37,6 +37,9 @@ if command -v python3 &> /dev/null; then
   export PATH="$HOME/Library/Python/${PYTHON_VERSION}/bin:$PATH"
 fi
 
+#ruby
+eval "$(rbenv init - zsh)"
+
 # ============================================================================
 # Aliases
 # ============================================================================

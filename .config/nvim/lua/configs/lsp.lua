@@ -28,15 +28,23 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
   once = true,
-  callback = function(args)
+  callback = function()
+    local capabilities = require('blink.cmp').get_lsp_capabilities(nil, true)
+    capabilities = vim.tbl_deep_extend('force', capabilities, {
+      offsetEncoding = { 'utf-16' },
+      general = {
+        positionEncodings = { 'utf-16' },
+      },
+    })
+
     vim.lsp.config('*', {
-      capabilities = require('blink.cmp').get_lsp_capabilities(nil, true),
+      capabilities = capabilities,
       root_markers = { '.git' },
     })
 
-    -- vim.lsp.enable("ts_ls")
     vim.lsp.enable('lua_ls')
 
+    -- vim.lsp.enable("ts_ls")
     vim.lsp.enable('vtsls')
     vim.lsp.enable('eslint')
     vim.lsp.enable('jsonls')
@@ -49,7 +57,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
     vim.lsp.enable('graphql')
 
     vim.lsp.enable('ruby_lsp')
-    vim.lsp.enable('solargraph')
+    -- vim.lsp.enable('solargraph')
     vim.lsp.enable('rubocop')
 
     vim.lsp.enable('tombi')
