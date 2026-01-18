@@ -56,8 +56,8 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
     vim.lsp.enable('tailwindcss')
     vim.lsp.enable('graphql')
 
-    vim.lsp.enable('ruby_lsp')
-    -- vim.lsp.enable('solargraph')
+    -- vim.lsp.enable('ruby_lsp')
+    vim.lsp.enable('solargraph')
     vim.lsp.enable('rubocop')
 
     vim.lsp.enable('tombi')
