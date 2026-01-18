@@ -2,6 +2,7 @@ return {
   'ibhagwan/fzf-lua',
   dependencies = { 'nvim-treesitter/nvim-treesitter-context', 'nvim-tree/nvim-web-devicons' },
   opts = function()
+    local actions = require('fzf-lua.actions')
     return {
       winopts = {
         title_pos = 'left',
@@ -9,6 +10,12 @@ return {
         preview = {
           title_pos = 'left',
           wrap = 'wrap',
+        },
+      },
+      keymap = {
+        fzf = {
+          ['ctrl-d'] = 'half-page-down',
+          ['ctrl-u'] = 'half-page-up',
         },
       },
       fzf_opts = {
