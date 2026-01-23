@@ -18,7 +18,7 @@ vim.o.mouse = 'a'
 vim.o.showmode = true
 
 -- Auto-hide command line when not in use (requires Neovim 0.8+)
-vim.o.cmdheight = 0
+vim.o.cmdheight = 1
 
 -- Sync clipboard between OS and Neovim.
 -- Schedule the setting after `UiEnter` because it can increase startup-time.
