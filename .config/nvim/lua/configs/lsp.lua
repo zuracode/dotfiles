@@ -44,6 +44,8 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
 
     vim.lsp.enable('lua_ls')
 
+    vim.lsp.enable('clangd')
+
     -- vim.lsp.enable("ts_ls")
     vim.lsp.enable('vtsls')
     vim.lsp.enable('eslint')
