@@ -61,3 +61,9 @@ fi
 # Powerlevel10k Configuration (Must be near the end)
 # ============================================================================
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+alias lzd='lazydocker'
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/zuratsintsadze/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
