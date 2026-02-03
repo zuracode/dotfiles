@@ -6,7 +6,10 @@
 config-version = 2
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+# border
+after-startup-command = [
+  "exec-and-forget borders active_color=0xff702963 inactive_color=0xffee4b2b width=5.0",
+]
 # Start AeroSpace at login
 start-at-login = true
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
@@ -58,10 +61,10 @@ preset = "qwerty"
 [gaps]
 inner.horizontal = 7
 inner.vertical = 7
-outer.left = 0
-outer.bottom = 0
-outer.top = 0
-outer.right = 0
+outer.left = 4
+outer.bottom = 4
+outer.top = 4
+outer.right = 4
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
