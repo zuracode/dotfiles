@@ -10,9 +10,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # NVM configuration
 export NVM_DIR="$HOME/.nvm"
 
-# Python alias environment
-export PYTHON_ALIAS_APPLIED=true
-
 # Pear Runtime
 export PATH="$HOME/Library/Application Support/pear/bin:$PATH"
 
@@ -28,3 +25,6 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 # Bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# fzf
+export FZF_DEFAULT_OPTS_FILE=~/.fzfrc

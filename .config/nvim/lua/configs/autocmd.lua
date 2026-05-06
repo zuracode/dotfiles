@@ -38,14 +38,15 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
 
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'InsertLeave' }, {
   pattern = '*.md',
+  desc = 'add spell checking for md files',
   callback = function()
     vim.opt_local.spell = true
     vim.opt_local.spelllang = 'en_us'
   end,
 })
 
--- Update leadmultispace based on shiftwidth
 vim.api.nvim_create_autocmd({ 'BufEnter', 'FileType' }, {
+  desc = 'Update leadmultispace based on shiftwidth',
   callback = function()
     local sw = vim.bo.shiftwidth
     if sw > 0 then

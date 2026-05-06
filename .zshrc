@@ -37,18 +37,15 @@ if command -v python3 &> /dev/null; then
   export PATH="$HOME/Library/Python/${PYTHON_VERSION}/bin:$PATH"
 fi
 
-# #ruby
-# eval "$(rbenv init - zsh)"
-
 # ============================================================================
 # Aliases
 # ============================================================================
 
-# Python alias (only if not already set in .zshenv)
-if [[ -z "$PYTHON_ALIAS_APPLIED" ]]; then
-    alias python='python3'
-    alias pip='pip3'
-fi
+# Python alias
+alias python='python3'
+alias pip='pip3'
+
+alias lzd='lazydocker'
 
 # ============================================================================
 # Shell Completions
@@ -58,12 +55,19 @@ fi
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # ============================================================================
-# Powerlevel10k Configuration (Must be near the end)
+# Addons
 # ============================================================================
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-alias lzd='lazydocker'
+
+#fzf
+source <(fzf --zsh)
+
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/zuratsintsadze/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+# ============================================================================
+# Powerlevel10k Configuration (Must be near the end)
+# ============================================================================
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
