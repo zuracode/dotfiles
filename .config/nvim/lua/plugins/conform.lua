@@ -62,6 +62,7 @@ return {
       lua = { 'stylua' },
       ruby = { 'rubocop' },
       tomb = { 'tombi' },
+      bash = { 'shellcheck' },
     },
   },
   config = function(_, opts)

@@ -1,25 +1,4 @@
 # ============================================================================
-# Powerlevel10k Instant Prompt (Must be at the top)
-# ============================================================================
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# ============================================================================
-# Oh My Zsh Configuration
-# ============================================================================
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Plugins
-plugins=(
-  git 
-  git-prompt
-)
-
-source "${ZSH}/oh-my-zsh.sh"
-
-# ============================================================================
 # Runtime Configurations
 # ============================================================================
 
@@ -46,6 +25,8 @@ alias python='python3'
 alias pip='pip3'
 
 alias lzd='lazydocker'
+alias ls="ls --color=always"
+alias l="ls -lah"
 
 # ============================================================================
 # Shell Completions
@@ -58,16 +39,15 @@ alias lzd='lazydocker'
 # Addons
 # ============================================================================
 
-#fzf
+# fzf
 source <(fzf --zsh)
 
+# docker
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/zuratsintsadze/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 
-# ============================================================================
-# Powerlevel10k Configuration (Must be near the end)
-# ============================================================================
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# starship
+eval "$(starship init zsh)"
