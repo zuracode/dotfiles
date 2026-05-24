@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-# set -euo pipefail
+set -euo pipefail
 
-session_focused_color="Red"
-session_exist_color="Green"
 kitty_bin="/Applications/kitty.app/Contents/MacOS/kitty"
 
 # Requirements
@@ -26,7 +24,7 @@ if [[ ! -x "$kitty_bin" ]]; then
 fi
 
 # checks if kitty running
-sock="$(find /tmp/*kitty-* 2>/dev/null | head -n1)"
+sock="$(find /tmp/mykitty-* 2>/dev/null | head -n1)"
 if [[ -z "$sock" ]]; then
   echo "no kitty sockets found in /tmp (kitty not running or remote control not available)."
   exit 1
@@ -72,10 +70,9 @@ active_sessions="$(
 
 # get first part - "session name" (which is separated with dot - "." from "extension") of filename
 sessions_with_name=$( echo "$sessions" | awk '{
-  split($0, arr, ".")
-
-  print arr[1]
-}' )
+  split($1, arr, ".")
+  print arr[1], "false", "false" }'
+)
 
 # merge sessions with active sessions
 merged_sessions=''
@@ -86,12 +83,33 @@ else
   merged_sessions=$(echo -e "$sessions_with_name")
 fi
 
-distinct_sessions=$(echo "$merged_sessions" | awk '!seen[$1]++')
+distinct_sessions=$(echo "$merged_sessions" | awk '!seen[$1]++' | awk '{
+  os_focused=$2
+  tab_focused=$3
+  os_focused_text=""
+  tab_focused_text=""
 
-# printf "\e[0;31mRed \e[1;31mbold Red \e[0;91mhigh intensity Red\n"
+  if(os_focused == "true"){
+    os_focused_text="active"
+  }
+
+  if(tab_focused == "true"){
+    tab_focused_text="focused"
+  }
+
+  if(!length(os_focused_text)){
+    printf "%s\n", $1
+  } else {
+    if(!length(tab_focused_text)){
+      printf "%s%s%s\n", $1, " - ", os_focused_text
+    } else {
+      printf "%s%s%s%s%s\n", $1, " - ", os_focused_text, ", ", tab_focused_text
+    }
+  }
+}')
 
 fzf_out="$(echo "$distinct_sessions" | fzf --height=100% --reverse \
-          --header="insert: type to filter, enter - open, esc - normal, d - close" \
+          --header="enter - open, esc - normal, d - close" \
           --prompt="list open kitty sessions > " \
           --expect=enter,ctrl-d,esc \
           --bind="ctrl-d:abort"
@@ -99,18 +117,21 @@ fzf_out="$(echo "$distinct_sessions" | fzf --height=100% --reverse \
 
 fzf_out_lines=$(echo "$fzf_out" | wc -l)
 
+sessions_path="$HOME/.config/kitty/sessions"
+session_file_extention="kitty-session"
+
 if [[ $fzf_out_lines -eq 2 ]];
 then
   fzf_key=$(echo "$fzf_out" | sed -n '1p')
-  selected_session_name=$(echo "$fzf_out" | sed -n '2p')
+  selected_session_name=$(echo "$fzf_out" | sed -n '2p' | awk '{ print $1 }')
 
   if [[ $fzf_key == "ctrl-d" ]];
   then
     "$kitty_bin" @ --to "unix:${sock}" action close_session "$selected_session_name" >/dev/null 2>&1 || true
   elif [[ $fzf_key == 'enter' ]];
   then
-    "$kitty_bin" @ --to "unix:${sock}" action goto_session "$HOME/.config/kitty/sessions/$selected_session_name.kitty-session"
+    "$kitty_bin" @ --to "unix:${sock}" action goto_session "$sessions_path/$selected_session_name.$session_file_extention"
   fi
 fi
 
-exit 1
+exit 0
