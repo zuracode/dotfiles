@@ -2,7 +2,6 @@ return {
   'ibhagwan/fzf-lua',
   dependencies = { 'nvim-treesitter/nvim-treesitter-context', 'nvim-tree/nvim-web-devicons' },
   opts = function()
-    local actions = require('fzf-lua.actions')
     return {
       winopts = {
         title_pos = 'left',
@@ -21,6 +20,10 @@ return {
       fzf_opts = {
         ['--no-hscroll'] = '',
         ['--wrap'] = '',
+        ['--color'] = 'bg+:#CCD0DA,pointer:#DC8A78',
+      },
+      fzf_colors = {
+        true,
       },
     }
   end,

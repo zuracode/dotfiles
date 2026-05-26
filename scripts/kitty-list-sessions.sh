@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$HOME/dotfiles/scripts/fzf.sh"
+
 set -euo pipefail
 
 kitty_bin="/Applications/kitty.app/Contents/MacOS/kitty"

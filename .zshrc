@@ -39,8 +39,13 @@ alias l="ls -lah"
 # Addons
 # ============================================================================
 
+# starship
+eval "$(starship init zsh)"
+
 # fzf
 source <(fzf --zsh)
+
+source "$HOME/dotfiles/scripts/fzf.sh"
 
 # docker
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
@@ -48,6 +53,3 @@ fpath=(/Users/zuratsintsadze/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
-
-# starship
-eval "$(starship init zsh)"
