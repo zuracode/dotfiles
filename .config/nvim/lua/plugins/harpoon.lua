@@ -1,3 +1,13 @@
+local normalize_list = function(t)
+  local normalized = {}
+  for _, v in pairs(t) do
+    if v ~= nil then
+      table.insert(normalized, v)
+    end
+  end
+  return normalized
+end
+
 return {
   'ThePrimeagen/harpoon',
   branch = 'harpoon2',
@@ -9,14 +19,6 @@ return {
     vim.keymap.set('n', '<leader>a', function()
       harpoon:list():add()
     end, { desc = 'Harpoon: Add mark of buffer in harpoon list' })
-
-    -- Toggle previous & next buffers stored within Harpoon list
-    vim.keymap.set('n', '<C-S-P>', function()
-      harpoon:list():prev()
-    end, { desc = 'Harpoon: toggle to previous buffer' })
-    vim.keymap.set('n', '<C-S-N>', function()
-      harpoon:list():next()
-    end, { desc = 'Harpoon: toggle to next buffer' })
   end,
   keys = function()
     local keys = {
@@ -24,55 +26,39 @@ return {
         '<leader>fe',
         function()
           local harpoon = require('harpoon')
-          local fzf = require('fzf-lua')
-          local utils = require('fzf-lua.utils')
-
-          local opts = fzf.config.normalize_opts({}, fzf.config.globals.grep)
-          local header = ':: ' .. utils.ansi_from_hl(opts.hls.header_bind, '<ctrl-x>') .. ' to ' .. utils.ansi_from_hl(opts.hls.header_text, 'delete')
-
-          fzf.fzf_exec(function(fzf_cb)
-            for i = 1, harpoon:list():length() do
-              local item = harpoon:list():get(i)
-              if item and item.value and item.value ~= '' then
-                fzf_cb(item.value)
+          Snacks.picker({
+            finder = function()
+              local file_paths = {}
+              local list = normalize_list(harpoon:list().items)
+              for i, item in ipairs(list) do
+                table.insert(file_paths, { text = item.value, file = item.value })
               end
-            end
-            fzf_cb()
-          end, {
-            prompt = 'Harpoon> ',
-            previewer = 'builtin',
-            fzf_opts = {
-              ['--header'] = header,
+              return file_paths
+            end,
+            win = {
+              input = {
+                keys = { ['<c-x>'] = { 'harpoon_delete', mode = { 'n', 'x', 'v', 'i', 'c', 't' } } },
+              },
+              list = {
+                keys = { ['<c-x>'] = { 'harpoon_delete', mode = { 'n', 'x', 'v', 'i', 'c', 't' } } },
+              },
             },
             actions = {
-              ['default'] = function(selected)
-                if selected[1] then
-                  vim.cmd('edit ' .. vim.fn.fnameescape(selected[1]))
-                end
-              end,
-              ['ctrl-x'] = {
-                fn = function(selected)
-                  if selected[1] then
-                    local list = harpoon:list()
-                    for i = list:length(), 1, -1 do
-                      local item = list:get(i)
-                      if item and item.value == selected[1] then
-                        list:remove(item)
-                        break
-                      end
-                    end
+              harpoon_delete = function(picker, item)
+                local to_remove = item or picker:selected()
+                harpoon:list():remove({ value = to_remove.text })
+                harpoon:list().items = normalize_list(harpoon:list().items)
 
-                    if list:length() == 0 then
-                      vim.api.nvim_input('<Esc>')
-                    end
-                  end
-                end,
-                reload = true,
-              },
+                if #harpoon:list().items == 0 then
+                  picker:close()
+                end
+
+                picker:find({ refresh = true })
+              end,
             },
           })
         end,
-        desc = 'Harpoon FZF Menu',
+        desc = 'Harpoon Snacks menu',
       },
     }
     return keys

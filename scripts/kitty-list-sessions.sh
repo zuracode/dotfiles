@@ -111,7 +111,7 @@ distinct_sessions=$(echo "$merged_sessions" | awk '!seen[$1]++' | awk '{
 }')
 
 fzf_out="$(echo "$distinct_sessions" | fzf --height=100% --reverse \
-          --header="enter - open, esc - normal, d - close" \
+          --header="enter - open, esc - normal, ctrl-d - close" \
           --prompt="list open kitty sessions > " \
           --expect=enter,ctrl-d,esc \
           --bind="ctrl-d:abort"
