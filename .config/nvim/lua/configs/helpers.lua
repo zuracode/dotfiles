@@ -18,7 +18,7 @@ local function escape_wildcards(path)
   return path:gsub('([%[%]%?%*])', '\\%1')
 end
 
-M.nvim_eleven = vim.fn.has('nvim-0.11') == 1
+M.nvim_twelve = vim.fn.has('nvim-0.12') == 1
 
 M.root_markers_git = '.git'
 M.root_markers_js_css_html = { 'package.json', 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb', 'bun.lock' }
@@ -34,7 +34,7 @@ function M.root_dir(bufnr, on_dir)
   local root_markers = M.root_markers_js_css_html
 
   -- Give the root markers equal priority by wrapping them in a table
-  root_markers = M.nvim_eleven and { root_markers, { '.git' } } or vim.list_extend(root_markers, { '.git' })
+  root_markers = M.nvim_twelve and { root_markers, { '.git' } } or vim.list_extend(root_markers, { '.git' })
   -- We fallback to the current working directory if no project root is found
   local project_root = vim.fs.root(bufnr, root_markers) or vim.fn.getcwd()
 
@@ -50,7 +50,7 @@ local function strip_archive_subpath(path)
 end
 
 local function search_ancestors(startpath, func)
-  if M.nvim_eleven then
+  if M.nvim_twelve then
     local validate = vim.validate
     validate('func', func, 'function')
   end
@@ -70,7 +70,7 @@ local function search_ancestors(startpath, func)
 end
 
 local function tbl_flatten(t)
-  return M.nvim_eleven and vim.iter(t):flatten(math.huge):totable() or vim.tbl_flatten(t)
+  return M.nvim_twelve and vim.iter(t):flatten(math.huge):totable() or vim.tbl_flatten(t)
 end
 
 function M.root_pattern(...)

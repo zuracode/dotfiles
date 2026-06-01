@@ -7,7 +7,7 @@ return function(INPUT_LINE_NUMBER)
   vim.opt.relativenumber = false
   vim.opt.showmode = false
   vim.opt.ruler = false
-  vim.opt.signcolumn = no
+  vim.opt.signcolumn = 'no'
   vim.opt.showtabline = 0
   vim.opt.laststatus = 0
   vim.o.cmdheight = 0

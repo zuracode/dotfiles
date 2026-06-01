@@ -3,9 +3,10 @@ return {
   'folke/snacks.nvim',
   lazy = false,
   priority = 1000,
+  ---@type snacks.Config
   opts = {
-    image = { enabled = true },
-    bigfile = { notify = false, enabled = true },
+    image = {},
+    bigfile = { notify = false },
     picker = {
       layout = {
         layout = {
@@ -15,6 +16,17 @@ return {
       matcher = {
         cwd_bonus = true, -- give bonus for matching files in the cwd
         frecency = true, -- frecency bonus
+      },
+    },
+    explorer = {},
+    statuscolumn = {
+      left = { 'sign' },
+      right = { 'git', 'fold' },
+    },
+    indent = {
+      animate = { enabled = false },
+      scope = {
+        hl = 'SnacksIndent7',
       },
     },
   },
@@ -64,6 +76,13 @@ return {
         Snacks.explorer()
       end,
       desc = 'Open file explorer',
+    },
+    {
+      '<leader>gd',
+      function()
+        Snacks.picker.git_diff()
+      end,
+      desc = 'Git Diff (Hunks)',
     },
   },
 }
