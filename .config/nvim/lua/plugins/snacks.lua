@@ -8,6 +8,11 @@ return {
     image = {},
     bigfile = { notify = false },
     picker = {
+      sources = {
+        buffers = {
+          current = false,
+        },
+      },
       layout = {
         layout = {
           backdrop = false, -- remove layout's background transparency
@@ -26,7 +31,7 @@ return {
     indent = {
       animate = { enabled = false },
       scope = {
-        hl = 'SnacksIndent7',
+        hl = 'SnacksIndent6',
       },
     },
   },

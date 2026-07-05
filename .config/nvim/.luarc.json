@@ -1,0 +1,10 @@
+{
+    "diagnostics.globals": [
+        "send_data_to_ui",
+        "navigate",
+        "move_cursor",
+        "move_cursor_in_nvim",
+        "move_cursor_in_nvim_window",
+        "move_cursor_in_kitty_window"
+    ]
+}

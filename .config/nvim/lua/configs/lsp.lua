@@ -68,6 +68,6 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
 
     vim.lsp.enable('cspell_ls')
 
-    -- vim.lsp.enable('markdown_oxide')
+    vim.lsp.enable('markdown-oxide')
   end,
 })
